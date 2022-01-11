@@ -12,6 +12,7 @@ Password = '' # Ваш пароль
 
 driver = webdriver.Firefox()
 driver.get("https://hh.ru/account/login")
+driver.set_page_load_timeout(7)
 
 button_login = driver.find_element(By.CSS_SELECTOR, 'span.bloko-link-switch') # Вход с паролем
 button_login.click()
@@ -30,6 +31,7 @@ button_submit.click()
 time.sleep(5)
 
 driver.get("https://hh.ru/applicant/resumes") # Переход на страницу с резюме
+driver.set_page_load_timeout(7)
 
 element = driver.find_element(By.CSS_SELECTOR, "button[data-qa='resume-update-button']") # Определение кнопки, для последующей работы с ней
 
