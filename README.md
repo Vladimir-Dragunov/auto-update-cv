@@ -12,4 +12,4 @@ Just refresher for hh.ru/rabota.by
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
-Задайте правило 0 */4 * * * DISPLAY=0: python path/where/locate/script/hh.py и сохраните.
+Задайте правило 0 */1 * * * DISPLAY=0: python path/where/locate/script/hh.py и сохраните.
