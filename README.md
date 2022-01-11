@@ -3,7 +3,7 @@ Just refresher for hh.ru/rabota.by
 
 Скрипт для обновления резюме на сайтах hh.ru/rabota.by
 
-Необходимо указать логин в переменную Login='example@mail.com' и пароль Password='qwerty123'
+Необходимо указать логин в переменную ___Login = 'example@mail.com'___ и пароль ___Password = 'qwerty123'___
 
 Для того чтобы работал на rabota.by, просто поменяйте строки:
 
