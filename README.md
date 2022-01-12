@@ -1,9 +1,17 @@
 # hhru-rby_refresh_resume
-Just refresher for hh.ru/rabota.by
+Скрипт для обновления резюме на сайтах hh.ru / rabota.by
 
-Скрипт для обновления резюме на сайтах hh.ru/rabota.by
+Работает на Windows / Linux(Ubuntu) / Mac OS
 
-Необходимо указать логин в переменную ___Login = 'example@mail.com'___ и пароль ___Password = 'qwerty123'___
+Для Windows, просто измените путь в переменной:
+>__service = Service('/usr/bin/geckodriver')__ на __service = Service('C:\\Files\\geckodriver.exe')__
+
+Библиотеки необходимые для работы скрипта:
+1. __Selenium__
+2. __PyVirtualDisplay__
+3. __Urllib3__
+
+Необходимо указать логин в переменную __Login = 'example@mail.com'__ и пароль __Password = 'qwerty123'__
 
 Для того чтобы работал на rabota.by, просто поменяйте строки:
 
@@ -12,4 +20,4 @@ Just refresher for hh.ru/rabota.by
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
-Задайте условие 0 */1 * * * DISPLAY=0: python path/where/locate/script/hh.py и сохраните.
+Задайте условие 0 */1 * * * /usr/bin/python3.8 /path/where/locate/script/hh.py и сохраните.
