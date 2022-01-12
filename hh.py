@@ -14,8 +14,11 @@ display.start()
 Login = '' # Ваш логин
 Password = '' # Ваш пароль
 
-service = Service('/usr/bin/geckodriver')
+'''crontab_geckodriver = '/home/dragunov/Logs/crontab_geckodriver.log'
+service = Service(executable_path='/usr/bin/geckodriver', log_path=crontab_geckodriver)''' # Логи
+service = Service(executable_path='/usr/bin/geckodriver')
 driver = webdriver.Firefox(options=firefox_options, service=service)
+
 driver.get("https://hh.ru/account/login")
 driver.set_page_load_timeout(7)
 
