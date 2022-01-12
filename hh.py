@@ -3,6 +3,10 @@ import time
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+
+firefox_options = Options()
 
 display = Display(visible=0, size=(800, 600))
 display.start()
@@ -10,7 +14,8 @@ display.start()
 Login = '' # Ваш логин
 Password = '' # Ваш пароль
 
-driver = webdriver.Firefox()
+service = Service('/usr/bin/geckodriver')
+driver = webdriver.Firefox(options=firefox_options, service=service)
 driver.get("https://hh.ru/account/login")
 driver.set_page_load_timeout(7)
 
