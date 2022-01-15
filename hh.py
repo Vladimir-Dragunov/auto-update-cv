@@ -43,7 +43,7 @@ driver.set_page_load_timeout(7)
 
 element = driver.find_element(By.CSS_SELECTOR, "button[data-qa='resume-update-button']") # Определение кнопки, для последующей работы с ней
 
-if element.text == 'Поднимать автоматически': # Если кнопка имеет текст - Поднимать автоматически, то прерывается работа скрипта
+if element.text == 'Поднимать автоматически' and element.text == 'Сделать видимым': # Если кнопка имеет текст - Поднимать автоматически, то прерывается работа скрипта
     driver.close()
 else:
     time.sleep(5)
