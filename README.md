@@ -20,4 +20,4 @@
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
-Задайте условие 0 */1 * * * /usr/bin/python3.8 /path/where/locate/script/hh.py и сохраните.
+Задайте условие */30 * * * * /usr/bin/python3.8 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_geckodriver_error.log 2>&1 и сохраните.
