@@ -11,7 +11,7 @@
 2. __PyVirtualDisplay__
 3. __Urllib3__
 
-Необходимо указать логин в переменную __Login = 'example@mail.com'__ и пароль __Password = 'qwerty123'__
+Необходимо внести переменные в переменное окружение, а именно __input_login_hh__=you-login@email.com и __input_password__=you-password
 
 Для того чтобы работал на rabota.by, просто поменяйте строки:
 
