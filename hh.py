@@ -1,54 +1,74 @@
 import time
-import os
-
+from datetime import datetime
+from config import input_login_hh
+from config import input_password
+from config import crontab_chromedriver_log
+from config import crontab_chromedriver_path
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
 
-firefox_options = Options()
+# set date and time in dd/mm/YY H/M/S
+now = datetime.now()
+date_cron = now.strftime("%d/%m/%Y %H:%M:%S")
+#
 
-display = Display(visible=0, size=(800, 600))
+# headless mode via pyvirtualdisplay
+display = Display(visible=False, size=(800, 600))
 display.start()
+#
 
-Login = os.environ['input_login_hh'] # Ваш логин
-Password = os.environ['input_password'] # Ваш пароль
+# login and password from config.py
+Login = input_login_hh
+Password = input_password
 
-crontab_geckodriver_path = '/usr/bin/geckodriver'
-crontab_geckodriver = '/home/dragunov/Logs/crontab_geckodriver.log' # Путь для лога
-service = Service(executable_path=crontab_geckodriver_path, log_path=crontab_geckodriver) # Запуск бинарника
-driver = webdriver.Firefox(options=firefox_options, service=service)
+# setting path for web driver path and log path
+driver = webdriver.Chrome(executable_path=crontab_chromedriver_path, service_log_path=crontab_chromedriver_log)
+#
 
+# set web page
 driver.get("https://rabota.by/account/login")
 driver.set_page_load_timeout(7)
+#
 
-button_login = driver.find_element(By.CSS_SELECTOR, "button.bloko-link-switch[data-qa='expand-login-by-password']") # Вход с паролем
+# define button "login with password" and click
+button_login = driver.find_element(By.CSS_SELECTOR, "button.bloko-link-switch[data-qa='expand-login-by-password']")
 button_login.click()
 time.sleep(5)
+#
 
-input_login = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-username']") # Внесение данных в поле логин
+# define input login and send keys
+input_login = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-username']")
 input_login.send_keys(Login)
 time.sleep(5)
+#
 
-input_password = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-password']")  # Внесение данных в поле пароль
+# define input password and send keys
+input_password = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-password']")
 input_password.send_keys(Password)
 time.sleep(5)
+#
 
-button_submit = driver.find_element(By.CSS_SELECTOR, "button[data-qa='account-login-submit']") # Вход на сайт
+# define button "join"
+button_submit = driver.find_element(By.CSS_SELECTOR, "button[data-qa='account-login-submit']")
 button_submit.click()
 time.sleep(5)
+#
 
-driver.get("https://rabota.by/applicant/resumes") # Переход на страницу с резюме
+# set web page
+driver.get("https://rabota.by/applicant/resumes")
 driver.set_page_load_timeout(7)
+#
 
-element = driver.find_element(By.CSS_SELECTOR, "button[data-qa='resume-update-button']") # Определение кнопки, для последующей работы с ней
+# define resume refresh button
+button_refresh = driver.find_element(By.CSS_SELECTOR, "button.bloko-link[data-qa='resume-update-button']")
+#
 
-if element.text == 'Поднимать автоматически' or element.text == 'Сделать видимым': # Если кнопка имеет текст - Поднимать автоматически, то прерывается работа скрипта
+if button_refresh.text == 'Поднимать автоматически' or button_refresh.text == 'Сделать видимым':
+    print(date_cron, 'Time is not over!')
     driver.quit()
 else:
     time.sleep(5)
-    submit = driver.find_element(By.CSS_SELECTOR, "button[data-qa='resume-update-button']")  # Если кнопка не имеет текст - Поднимать автоматически, то кнопка прожимается и завершается работа скрипта
-    submit.click()
+    button_refresh.click()
+    print(date_cron, 'All done!')
     driver.quit()
-    
