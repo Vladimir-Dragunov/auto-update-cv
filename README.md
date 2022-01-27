@@ -3,15 +3,16 @@
 
 Работает на Windows / Linux(Ubuntu) / Mac OS
 
-Для Windows, просто измените путь в переменной:
->__service = Service('/usr/bin/geckodriver')__ на __service = Service('C:\\Files\\geckodriver.exe')__
-
 Библиотеки необходимые для работы скрипта:
 1. __Selenium__
 2. __PyVirtualDisplay__
 3. __Urllib3__
 
-Необходимо внести переменные в переменное окружение, а именно __input_login_hh__=you-login@email.com и __input_password__=you-password
+Необходимо внести данные в файле конфига config.py:
+1. __input_login_hh__= 'you-login@email.com'
+2. __input_password__= 'you-password'
+3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:\\you-folder\chromedriver.exe')
+4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:\\you-folder\chromedriver.log')
 
 Для того чтобы работал на rabota.by, просто поменяйте строки:
 
@@ -20,4 +21,4 @@
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
-Задайте условие */30 * * * * /usr/bin/python3.8 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_geckodriver_error.log 2>&1 и сохраните.
+Задайте условие */30 * * * * /usr/bin/python3.8 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
