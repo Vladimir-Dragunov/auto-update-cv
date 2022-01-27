@@ -7,6 +7,7 @@ from config import crontab_chromedriver_path
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
 # set date and time in dd/mm/YY H/M/S
 now = datetime.now()
@@ -23,7 +24,8 @@ Login = input_login_hh
 Password = input_password
 
 # setting path for web driver path and log path
-driver = webdriver.Chrome(executable_path=crontab_chromedriver_path, service_log_path=crontab_chromedriver_log)
+chrome_service = Service(executable_path=crontab_chromedriver_path)
+driver = webdriver.Chrome(service=chrome_service, service_log_path=crontab_chromedriver_log)
 #
 
 # set web page
