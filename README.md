@@ -22,3 +22,5 @@
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
 Задайте условие */30 * * * * /usr/bin/python3.8 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
+
+__WARNING!__ : Не рекомендую убирать тайминги, т.к. вам подсунут captch-у или просто дропнут.
