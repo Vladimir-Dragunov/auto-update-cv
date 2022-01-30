@@ -1,9 +1,6 @@
 import time
 from datetime import datetime
-from config import input_login_hh
-from config import input_password
-from config import crontab_chromedriver_log
-from config import crontab_chromedriver_path
+from config import *
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -29,7 +26,7 @@ driver = webdriver.Chrome(service=chrome_service, service_log_path=crontab_chrom
 #
 
 # set web page
-driver.get("https://rabota.by/account/login")
+driver.get("https://hh.ru/account/login")
 driver.set_page_load_timeout(7)
 #
 
@@ -58,7 +55,7 @@ time.sleep(5)
 #
 
 # set web page
-driver.get("https://rabota.by/applicant/resumes")
+driver.get("https://hh.ru/applicant/resumes")
 driver.set_page_load_timeout(7)
 #
 
