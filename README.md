@@ -16,7 +16,7 @@
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
-Задайте условие */40 * * * * /usr/bin/python3.8 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
+Задайте условие */40 * * * * /usr/bin/python3 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
 
 Если хотите запускать скрипт для сайта rabota.by, поменяйте строки:
 
