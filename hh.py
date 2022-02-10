@@ -31,7 +31,7 @@ driver.set_page_load_timeout(7)
 #
 
 # define button "login with password" and click
-button_login = driver.find_element(By.CSS_SELECTOR, "button.bloko-link-switch[data-qa='expand-login-by-password']")
+button_login = driver.find_element(By.CSS_SELECTOR, "button.bloko-link_pseudo[data-qa='expand-login-by-password']")
 button_login.click()
 time.sleep(5)
 #
