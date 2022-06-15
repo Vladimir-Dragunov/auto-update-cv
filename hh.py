@@ -67,9 +67,13 @@ if button_refresh.text == 'Поднимать автоматически' or but
     print(date_cron, 'Time is not over!')
     driver.quit()
     display.stop()
+    display.popen.terminate()
+    display.popen.kill()
 else:
     time.sleep(5)
     button_refresh.click()
     print(date_cron, 'All done!')
     driver.quit()
     display.stop()
+    display.popen.terminate()
+    display.popen.kill()
