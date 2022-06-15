@@ -66,8 +66,10 @@ button_refresh = driver.find_element(By.CSS_SELECTOR, "button.bloko-link[data-qa
 if button_refresh.text == 'Поднимать автоматически' or button_refresh.text == 'Сделать видимым':
     print(date_cron, 'Time is not over!')
     driver.quit()
+    display.stop()
 else:
     time.sleep(5)
     button_refresh.click()
     print(date_cron, 'All done!')
     driver.quit()
+    display.stop()
