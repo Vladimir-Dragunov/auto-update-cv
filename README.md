@@ -1,7 +1,8 @@
 # hhru-rby_refresh_resume
 Скрипт для обновления резюме на сайтах hh.ru / rabota.by
 
-Работает на Windows / Linux(Ubuntu) / Mac OS
+Работает на [Windows(hh.py-win)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
+> ###### *Для подержки на Windows требуется актуальная версия Google Chrome
 
 Библиотеки необходимые для работы скрипта:
 1. __Selenium__
@@ -11,8 +12,8 @@
 Необходимо внести данные в файле конфига config.py:
 1. __input_login_hh__= 'you-login@email.com'
 2. __input_password__= 'you-password'
-3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:\\you-folder\chromedriver.exe')
-4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:\\you-folder\chromedriver.log')
+3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:/your-folder/chromedriver.exe')
+4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:/your-folder/chromedriver.log')
 
 Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
 
