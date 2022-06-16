@@ -1,10 +1,9 @@
 # hhru-rby_refresh_resume
 Скрипт для обновления резюме на сайтах hh.ru / rabota.by
 
-Работает на [Windows(hh.py-win)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
-> ###### *Для подержки на Windows требуется актуальная версия Google Chrome
+Работает на [Windows(hh-win.py)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
 
-Библиотеки необходимые для работы скрипта:
+Зависимости:
 1. __Selenium__
 2. __PyVirtualDisplay__
 3. __Urllib3__
@@ -15,13 +14,47 @@
 3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:/your-folder/chromedriver.exe')
 4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:/your-folder/chromedriver.log')
 
-Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
+# Планировщики задач
 
-Задайте условие */40 * * * * /usr/bin/python3 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
+**LINUX или MAC OS**
 
-Если хотите запускать скрипт для сайта rabota.by, поменяйте строки:
+Вызовите cron через команду 
+```
+crontab -e
+```
 
->__driver.get("https://hh.ru/account/login")__ на __driver.get("https://rabota.by/account/login")__
->__driver.get("https://hh.ru/applicant/resumes")__ на __driver.get("https://rabota.by/applicant/resumes")__
+Задайте внизу условие и сохраните
+```
+*/40 * * * * /usr/bin/python3 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1
+```
+
+**WINDOWS**
+
+Для Windows вам понадобится создать bat-файл.
+
+В нём укажите дирректорию к бинарному файлу python и дирректорию куда загружен скрипт
+
+```
+C:\you-folder\python.exe C:\you-folder\hh-win.py
+pause
+```
+
+![1](https://i.imgur.com/O5NF5Fa.png)
+![2](https://i.imgur.com/jxcvidK.png)
+![3](https://i.imgur.com/NnLALQV.png)
+![4](https://i.imgur.com/lkPsGKs.png)
+![5](https://i.imgur.com/04ewFOQ.png)
+![6](https://i.imgur.com/6DIiBqd.png)
+![7](https://i.imgur.com/WGE3UrE.png)
+
+# hh.ru или rabota.by
+
+Если хотите запускать скрипт для сайта rabota.by, замените строки адресов на:
+```
+driver.get("https://rabota.by/account/login")
+```
+```
+driver.get("https://rabota.by/applicant/resumes")
+```
 
 __WARNING!__ : Не рекомендую убирать тайминги, т.к. вам подсунут captch-у или просто дропнут.
