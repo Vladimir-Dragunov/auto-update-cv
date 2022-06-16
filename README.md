@@ -1,5 +1,5 @@
 # Auto-update CV
-Скрипт для обновления резюме на сайтах hh.ru / rabota.by
+Скрипт для автоматического обновления резюме на сайтах hh.ru / rabota.by
 
 Работает на [Windows(hh-win.py)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
 
@@ -32,7 +32,7 @@ crontab -e
 
 Для Windows вам понадобится создать bat-файл.
 
-В нём укажите дирректорию к бинарному файлу python и дирректорию куда загружен скрипт
+В нём укажите директорию к бинарному файлу python и директорию куда загружен скрипт
 
 ```
 C:\you-folder\python.exe C:\you-folder\hh-win.py
