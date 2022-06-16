@@ -1,7 +1,6 @@
 import time
 from datetime import datetime
 from config import *
-#from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -9,11 +8,6 @@ from selenium.webdriver.chrome.service import Service
 # set date and time in dd/mm/YY H/M/S
 now = datetime.now()
 date_cron = now.strftime("%d/%m/%Y %H:%M:%S")
-#
-
-# headless mode via pyvirtualdisplay
-#display = Display(visible=False, size=(800, 600))
-#display.start()
 #
 
 # login and password from config.py
@@ -26,7 +20,7 @@ driver = webdriver.Chrome(service=chrome_service, service_log_path=crontab_chrom
 #
 
 # set web page
-driver.get("https://rabota.by/account/login")
+driver.get("https://hh.ru/account/login")
 driver.set_page_load_timeout(7)
 #
 
@@ -55,7 +49,7 @@ time.sleep(5)
 #
 
 # set web page
-driver.get("https://rabota.by/applicant/resumes")
+driver.get("https://hh.ru/applicant/resumes")
 driver.set_page_load_timeout(7)
 #
 
@@ -66,10 +60,8 @@ button_refresh = driver.find_element(By.CSS_SELECTOR, "button.bloko-link[data-qa
 if button_refresh.text == 'Поднимать автоматически' or button_refresh.text == 'Сделать видимым':
     print(date_cron, 'Time is not over!')
     driver.quit()
-    #display.stop()
 else:
     time.sleep(5)
     button_refresh.click()
     print(date_cron, 'All done!')
     driver.quit()
-    #display.stop()
