@@ -5,7 +5,7 @@
 
 Зависимости:
 1. __Selenium__
-2. __PyVirtualDisplay__
+2. __PyVirtualDisplay(Linux и Mac OS)__
 3. __Urllib3__
 
 Необходимо внести данные в файле конфига config.py:
