@@ -1,4 +1,4 @@
-# hhru-rby_refresh_resume
+# Auto-update CV
 Скрипт для обновления резюме на сайтах hh.ru / rabota.by
 
 Работает на [Windows(hh-win.py)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
