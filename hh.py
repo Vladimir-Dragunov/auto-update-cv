@@ -32,7 +32,7 @@ driver = webdriver.Chrome(service=chrome_service, service_log_path=crontab_chrom
 #
 
 # set web page
-url = ["https://rabota.by/account/login", "https://rabota.by/applicant/resumes"]
+url = ["https://hh.ru/account/login", "https://hh.ru/applicant/resumes"]
 try:
     driver.get(url[0])
     driver.implicitly_wait(10)
