@@ -1,11 +1,10 @@
 # Auto-update CV
 Скрипт для автоматического обновления резюме на сайтах hh.ru / rabota.by
 
-Работает на [Windows(hh-win.py)](https://github.com/Vladimir-Dragunov/hhru-rby_refresh_resume/blob/main/hh-win.py) / Linux(Ubuntu) / Mac OS
+Работает на Windows / Linux / Mac OS
 
 Зависимости:
 1. __Selenium__
-2. __PyVirtualDisplay(Linux и Mac OS)__
 3. __Urllib3__
 
 Необходимо внести данные в файле конфига config.py:
