@@ -7,11 +7,7 @@
 1. __Selenium__
 3. __Urllib3__
 
-Необходимо внести данные в файле конфига config.py:
-1. __input_login_hh__= 'you-login@email.com'
-2. __input_password__= 'you-password'
-3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:/your-folder/chromedriver.exe')
-4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:/your-folder/chromedriver.log')
+***Необходим первый запуск через терминал, где нужно выбрать сайт и внести данные!***
 
 # Планировщики задач
 
