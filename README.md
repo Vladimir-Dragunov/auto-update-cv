@@ -42,14 +42,4 @@ pause
 ![6](https://i.imgur.com/6DIiBqd.png)
 ![7](https://i.imgur.com/WGE3UrE.png)
 
-# hh.ru или rabota.by
-
-Если хотите запускать скрипт для сайта rabota.by, замените строки адресов на:
-```
-driver.get("https://rabota.by/account/login")
-```
-```
-driver.get("https://rabota.by/applicant/resumes")
-```
-
 __WARNING!__ : Не рекомендую убирать тайминги, т.к. вам подсунут captch-у или просто дропнут.
