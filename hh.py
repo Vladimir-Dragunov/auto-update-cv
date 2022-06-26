@@ -1,20 +1,79 @@
 import time
+import configparser
+import getpass
+import os
 from datetime import datetime
-from config import *
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
+config = configparser.ConfigParser()
+
+def write_file():
+    config.write(open('config.ini', 'w'))
+
+if not os.path.exists('config.ini'):
+    config['SETTINGS'] = {
+        'site_checked': 'false'
+    }
+
+    write_file()
+
+config.read('config.ini')
+site_check = config['SETTINGS']['site_checked']
+
+if site_check == 'false':
+    print('Выберите сайт: \n [1] - hh.ru \n [2] - rabota.by')
+
+    url = {1: ('https://rabota.by/account/login', 'https://rabota.by/applicant/resumes'),
+           2: ('https://hh.ru/account/login', 'https://hh.ru/applicant/resumes')}
+
+    while True:
+        try:
+            number = int(input())
+        except ValueError:
+            print('Введите правильное значение')
+            number = None
+            continue
+
+        if number in url.keys():
+            break
+        else:
+            print('Введите правильно значение')
+
+    input_login = input('Введите логин: ')
+    input_password = getpass.getpass(prompt='Введите пароль: ')
+    driver_path = input('Введите путь к chromedriver: ')
+    log_path = input('Введите путь где будет лежать лог файл: ')
+
+    site_login_link, site_resume_link = url[number]
+
+    config.set('SETTINGS', 'site_checked', 'true')
+    config.set('SETTINGS', 'site_login_link', site_login_link)
+    config.set('SETTINGS', 'site_resume_link', site_resume_link)
+    config.set('SETTINGS', 'login', input_login)
+    config.set('SETTINGS', 'password', input_password)
+    config.set('SETTINGS', 'driver_path', driver_path)
+    config.set('SETTINGS', 'log_path', log_path)
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+
+
 # set date and time in dd/mm/YY H/M/S
 now = datetime.now()
 date_cron = now.strftime("%d/%m/%Y %H:%M:%S")
 #
 
-# login and password from config.py
-Login = input_login_hh
-Password = input_password
+# variables from config.ini
+login = config['SETTINGS']['login']
+password = config['SETTINGS']['password']
+driver_path = config['SETTINGS']['driver_path']
+log_path = config['SETTINGS']['log_path']
+site_login = config['SETTINGS']['site_login_link']
+site_resume = config['SETTINGS']['site_resume_link']
+#
 
 # chrome options
 driver_options = webdriver.ChromeOptions()
@@ -27,17 +86,16 @@ driver_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64
 #
 
 # setting path for web driver path and log path
-chrome_service = Service(executable_path=crontab_chromedriver_path)
-driver = webdriver.Chrome(service=chrome_service, service_log_path=crontab_chromedriver_log, options=driver_options)
+chrome_service = Service(executable_path=driver_path)
+driver = webdriver.Chrome(service=chrome_service, service_log_path=log_path, options=driver_options)
 #
 
 # set web page
-url = ["https://hh.ru/account/login", "https://hh.ru/applicant/resumes"]
 try:
-    driver.get(url[0])
+    driver.get(site_login)
     driver.implicitly_wait(10)
 except TimeoutException:
-    print(date_cron, "Can't go on", url[0])
+    print(date_cron, "Can't go on", site_login)
     driver.quit()
 #
 
@@ -54,7 +112,7 @@ except NoSuchElementException:
 # define input login and send keys
 try:
     input_login = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-username']")
-    input_login.send_keys(Login)
+    input_login.send_keys(login)
     time.sleep(5)
 except NoSuchElementException:
     print(date_cron, "Can't see input with username")
@@ -64,7 +122,7 @@ except NoSuchElementException:
 # define input password and send keys
 try:
     input_password = driver.find_element(By.CSS_SELECTOR, "input[data-qa='login-input-password']")
-    input_password.send_keys(Password)
+    input_password.send_keys(password)
     time.sleep(5)
 except NoSuchElementException:
     print(date_cron, "Can't see input with password")
@@ -83,10 +141,10 @@ except NoSuchElementException:
 
 # set web page
 try:
-    driver.get(url[1])
+    driver.get(site_resume)
     driver.implicitly_wait(10)
 except TimeoutException:
-    print(date_cron, "Can't go on", url[1])
+    print(date_cron, "Can't go on", site_resume)
     driver.quit()
 #
 
