@@ -20,7 +20,7 @@ crontab -e
 
 Задайте внизу условие и сохраните
 ```
-*/40 * * * * /usr/bin/python3 -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1
+*/40 * * * * cd /path/where/locate/script && python -u /path/where/locate/script/hh.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1
 ```
 
 **WINDOWS**
