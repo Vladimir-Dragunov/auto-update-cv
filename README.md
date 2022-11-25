@@ -5,7 +5,10 @@
 
 Зависимости:
 1. __Selenium__
-3. __Urllib3__
+2. __Google Chrome:__ [__Windows__, __Linux__ и __MacOS__](https://www.google.com/intl/ru/chrome/)
+ - __Linux__ без графической оболочки - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+3. [__Chromedriver__](https://chromedriver.chromium.org/downloads), выбирайте исходя из вашей версии Google Chrome
 
 ***Необходим первый запуск через терминал, где нужно выбрать сайт и внести данные!***
 
