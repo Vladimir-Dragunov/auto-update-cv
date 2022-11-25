@@ -25,7 +25,7 @@ config.read('config.ini')
 site_check = config['SETTINGS']['site_checked']
 
 if site_check == 'false':
-    print('Выберите сайт: \n [1] - hh.ru \n [2] - rabota.by')
+    print('Выберите сайт: \n [1] - rabota.by \n [2] - hh.ru')
 
     url = {1: ('https://rabota.by/account/login', 'https://rabota.by/applicant/resumes'),
            2: ('https://hh.ru/account/login', 'https://hh.ru/applicant/resumes')}
