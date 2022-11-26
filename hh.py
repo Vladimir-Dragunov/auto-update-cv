@@ -2,6 +2,7 @@ import time
 import configparser
 import getpass
 import os
+import sys
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -11,17 +12,22 @@ from selenium.common.exceptions import TimeoutException
 
 config = configparser.ConfigParser()
 
-def write_file():
-    config.write(open('config.ini', 'w'))
+program_path = sys.argv[0]
+config_path = os.path.abspath(program_path+'/..')
 
-if not os.path.exists('config.ini'):
+
+def write_file():
+    config.write(open(config_path+'/config.ini', 'w'))
+    
+
+if not os.path.exists(config_path+'/config.ini'):
     config['SETTINGS'] = {
         'site_checked': 'false'
     }
 
     write_file()
 
-config.read('config.ini')
+config.read(config_path+'/config.ini')
 site_check = config['SETTINGS']['site_checked']
 
 if site_check == 'false':
