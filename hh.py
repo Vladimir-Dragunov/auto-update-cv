@@ -151,12 +151,14 @@ except TimeoutException:
 # define resume refresh button and execute
 try:
     time.sleep(15)
-    button_refresh = driver.find_element(By.XPATH, '//button[@data-qa="resume-update-button"]')
+    button_refresh = driver.find_element(By.XPATH, '//button[@data-qa="resume-update-button_actions"]')
+    driver.execute_script("return arguments[0].scrollIntoView();", button_refresh)
 except NoSuchElementException:
     print(date_cron, "Can't see refresh button")
     driver.quit()
 finally:
-    button_refresh = driver.find_element(By.XPATH, '//button[@data-qa="resume-update-button"]')
+    button_refresh = driver.find_element(By.XPATH, '//button[@data-qa="resume-update-button_actions"]')
+    driver.execute_script("return arguments[0].scrollIntoView();", button_refresh)
     if button_refresh.text == 'Поднимать автоматически' or button_refresh.text == 'Сделать видимым':
         print(date_cron, 'Time is not over!')
         driver.quit()
