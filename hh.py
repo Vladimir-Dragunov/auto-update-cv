@@ -4,11 +4,11 @@ program_name = sys.argv[0]
 directory_path = os.path.abspath(program_name + '/..')
 
 
-def console_cleaner():
-    if os.uname().sysname == 'Windows':
-        os.popen('cls')
-    else:
-        os.popen('clear')
+def clear_console():
+    if os.name() == 'nt': # Windows
+        os.system('cls')
+    else: # Linux/Unix/MacOS
+        os.system('clear')
 
 
 class Chromedriver:
@@ -258,7 +258,7 @@ finally:
         time.sleep(5)
         button_refresh.click()
         print('Clicking on button')
-        console_cleaner()
+        clear_console()
         print(date_cron, 'All done!')
         driver.close()
         driver.quit()
